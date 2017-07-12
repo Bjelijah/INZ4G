@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/menu_home_like"
+        android:title="@string/home_setting_like"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_favorite_border_white_24dp"
+        />
+
+    <item
+        android:id="@+id/menu_home_help"
+        android:title="@string/home_setting_help"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_help_outline_white_24dp"
+        />
+
+    <item
+        android:id="@+id/menu_home_notice_search"
+        android:title="@string/home_setting_search"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_search_white_24dp"
+        />
+
+    <item
+        android:id="@+id/menu_home_scope"
+        android:title="@string/home_setting_scope"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_view_headline_white_24dp"
+        />
+
+    <item
+        android:id="@+id/menu_home_setting"
+        android:title="@string/home_setting_set"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/menu_home_notice_unread"
+        android:title="@string/home_setting_unread"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_home_notice_read"
+        android:title="@string/home_setting_read"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_home_notice_all"
+        android:title="@string/home_setting_read_all"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+
+
+</menu>

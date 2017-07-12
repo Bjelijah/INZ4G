@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 边框颜色 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/alpha_white" />
+            <corners android:radius="2.5dp"/>
+        </shape>
+    </item>
+
+    <!-- 边框圆角 -->
+    <item android:bottom="1dp" android:right="1dp" android:top="1dp" android:left="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_grey_700" />
+            <corners android:radius="2.5dp"/>
+            <padding android:bottom="1.8dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1.8dp" />
+        </shape>
+    </item>
+
+
+    <!-- 点击按钮效果 -->
+    <item>
+        <ripple android:color="@color/white">
+            <item>
+                <selector>
+                    <item android:drawable="@color/md_grey_700"/>
+                </selector>
+            </item>
+        </ripple>
+    </item>
+
+
+</layer-list>

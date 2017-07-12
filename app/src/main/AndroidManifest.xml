@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inz.inz4g">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ecam_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ecam_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.inz.activity.LogoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.inz.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppThemeLogin"
+            />
+
+        <activity android:name="com.inz.activity.HomeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppThemeHome"
+            />
+        <activity android:name="com.inz.activity.BigImagesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppThemeHome.BigImage"
+            />
+
+        <activity android:name="com.inz.activity.BasePlayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/MyappThemePlay"
+            />
+
+        <activity android:name="com.inz.activity.PlayViewActivity"
+            android:parentActivityName="com.inz.activity.BasePlayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/MyappThemePlay"
+            />
+
+        <activity android:name="com.inz.activity.VideoListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyappThemeVideoList"
+            />
+
+        <activity android:name="com.inz.activity.PlayBackActivity"
+            android:parentActivityName="com.inz.activity.BasePlayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/MyappThemePlay"
+            />
+        <activity android:name="com.inz.activity.ServerSetActivity"
+            android:theme="@style/MyAppThemeServerAddress"
+            />
+
+
+    </application>
+
+</manifest>

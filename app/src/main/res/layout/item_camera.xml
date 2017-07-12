@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="1dp"
+    android:layout_marginTop="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/home_bk"
+    >
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:background="@color/home_bk"
+            />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/item_camera_iv_picture"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/card_camera_default_image"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/item_camera_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            android:background="@color/home_bk"
+            >
+
+            <TextView
+                android:id="@+id/item_camera_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center|bottom"
+                android:layout_weight="1.0"
+                />
+
+            <TextView
+                android:id="@+id/item_camera_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/md_grey_400"
+                android:textSize="10sp"
+                android:gravity="left|bottom"
+                android:text="test"
+                android:visibility="gone"
+                android:layout_weight="1.0"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/camera_list_wifi_intensity"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/item_camera_iv_wifi_idensity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/item_camera_iv_offline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top" />
+
+
+
+</FrameLayout>

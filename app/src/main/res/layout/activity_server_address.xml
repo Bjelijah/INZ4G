@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/home_bk"
+    style="@style/MyAppThemeServerAddress"
+    >
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="55dip"-->
+    <!--android:background="@color/home_bk" >-->
+
+    <!--<ImageButton-->
+    <!--android:id="@+id/server_set_ib_back"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="#00000000"-->
+    <!--android:src="@drawable/back_btn_selector"-->
+    <!--android:layout_gravity="left|center" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/server_setting_title"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="23sp"-->
+    <!--android:layout_gravity="center"-->
+    <!--/>-->
+
+    <!--</FrameLayout>-->
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/server_set_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:minHeight="@dimen/abc_action_bar_default_height_material"
+            android:background="@color/home_bk_dark"
+            >
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:id="@+id/server_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="5dp"
+        android:paddingLeft="@dimen/add_listen_device_padding_horizontal"
+        android:paddingRight="@dimen/add_listen_device_padding_horizontal"
+        android:paddingTop="@dimen/add_listen_device_padding_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:text="@string/server_setting_ip_title"
+                android:textSize="20sp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_fun"
+                app:errorTextAppearance="@style/errorStyle"
+                app:hintTextAppearance="@style/FloatingStyle">
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/server_set_et_ip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/server_setting_ip"
+
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:text="@string/server_setting_port_title"
+                android:textSize="20sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_fun"
+                app:errorTextAppearance="@style/errorStyle"
+                app:hintTextAppearance="@style/FloatingStyle">
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/server_set_et_port"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/server_setting_port"
+
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:text="@string/server_setting_t_ip_title"
+                android:textSize="20sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_fun"
+                app:errorTextAppearance="@style/errorStyle"
+                app:hintTextAppearance="@style/FloatingStyle">
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/server_set_t_ip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/server_setting_t_ip"
+
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:text="@string/server_setting_t_port_title"
+                android:textSize="20sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_fun"
+                app:errorTextAppearance="@style/errorStyle"
+                app:hintTextAppearance="@style/FloatingStyle">
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/server_set_t_port"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/server_setting_t_port"
+
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:text="@string/server_setting_record_stream"
+                android:textSize="20sp"/>
+
+
+
+            <RadioGroup
+                android:id="@+id/server_set_record_stream"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+                <RadioButton
+                    android:id="@+id/server_set_record_stream_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="主码流"/>
+
+
+                <RadioButton
+                    android:id="@+id/server_set_record_stream_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="次码流"/>
+
+
+            </RadioGroup>
+
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:text="@string/server_setting_ssl"
+                android:textSize="20sp" />
+
+
+            <Switch
+                android:id="@+id/server_set_ssl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/server_set_default_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:background="@drawable/ap_ll"
+                android:text="@string/server_setting_default"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/server_set_btn"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/add_listen_device_margin_vertcail_ctrl"
+                android:background="@drawable/ap_ll"
+                android:text="@string/server_setting_btn"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

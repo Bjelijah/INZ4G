@@ -1,0 +1,104 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorHint">@color/alpha_white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="anim_window_no" parent="@android:style/Animation"/>
+
+    <style name="MyAppThemeLogin" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/login_bk</item>
+        <item name="colorPrimaryDark">@color/login_bk</item>
+        <item name="android:windowAnimationStyle">@style/anim_window_no</item>
+    </style>
+
+    <style name="FloatingStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="errorStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyAppThemeHome" parent="MaterialDrawerTheme.TranslucentStatus">
+        <item name="colorPrimary">@color/home_bk</item>
+        <item name="colorPrimaryDark">@color/home_bk_dark</item>
+        <item name="colorAccent">@color/home_accent</item>
+
+        <!--<item name="android:background">@color/material_drawer_dark_background</item>-->
+        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text
+        </item>
+        <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
+        <!--<item name="material_drawer_selected_text">#F1433C</item>-->
+        <item name="material_drawer_selected_text">@color/homeText</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_primary_text
+        </item>
+    </style>
+
+
+    <style name="WidgetProgressBar" parent="android:Widget.ProgressBar">　　
+        <item name="android:indeterminateDrawable">@drawable/progress_large_white</item>
+        <item name="android:indeterminateDuration">600</item>
+        <item name="android:minWidth">32dip</item>
+        　　
+        <item name="android:maxWidth">32dip</item>
+        　　
+        <item name="android:minHeight">32dip</item>
+        　　
+        <item name="android:maxHeight">32dip</item>
+    </style>
+
+    <style name="MyAppThemeHome.BigImage" >
+    </style>
+    <style name="MyappThemePlay" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="colorPrimary">@color/home_bk</item>
+        <item name="colorPrimaryDark">@color/home_bk_dark</item>
+    </style>
+
+
+    <style name="CollapsingTextAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+    <style name="CollapsingTextAppearance.Inverse" >
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="ToolBarWithNavigationBack">
+        <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
+    </style>
+
+    <style name="MyappThemeVideoList" parent="MaterialDrawerTheme.TranslucentStatus">
+        <item name="colorPrimary">@color/home_bk</item>
+        <item name="colorPrimaryDark">@color/home_bk_dark</item>
+        <item name="colorAccent">@color/home_accent</item>
+    </style>
+
+    <style name="MyAppThemeServerAddress" parent="MaterialDrawerTheme">
+        <item name="android:colorPrimary">@color/home_bk</item>
+        <item name="android:colorPrimaryDark">@color/home_bk_dark</item>
+    </style>
+</resources>

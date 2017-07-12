@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:id="@+id/item_vod_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="@color/md_grey_200"
+        />
+
+    <RelativeLayout
+        android:id="@+id/item_vod_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="@drawable/item_video_bk"
+        android:paddingTop="@dimen/item_vod_padding_horizontal"
+        android:paddingBottom="@dimen/item_vod_padding_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <TextView
+            android:id="@+id/item_vod_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/item_vod_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/abc_ic_arrow_drop_right_black_24dp"
+            />
+    </RelativeLayout>
+</LinearLayout>
