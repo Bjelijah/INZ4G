@@ -27,8 +27,8 @@
     <string name="cancel">取消</string>
     <string name="not_online">不在线</string>
     <string name="not_online_message">离线设备，无法打开</string>
-    <string name="home_fragment_devices">DeviceList</string>
-    <string name="home_fragment_medias">Media</string>
+    <string name="home_fragment_devices">设备</string>
+    <string name="home_fragment_medias">图片</string>
     <string name="home_fragment_notice">Notice</string>
     <string name="loacl_file_activity_no_iamge_bg">暂无文件</string>
     <string name="share_pic">分享图片</string>
@@ -74,4 +74,11 @@
 
     <string name="login_use_custom">自定义服务器?</string>
     <string name="login_server">www.haoweis.com:8850</string>
+
+
+    <string name="camera_play_back">回放</string>
+    <string name="camera_play_view">点击进入</string>
+    <string name="camera_online">在线</string>
+    <string name="camera_offline">离线</string>
+
 </resources>

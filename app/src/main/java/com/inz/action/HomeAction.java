@@ -59,6 +59,7 @@ public class HomeAction {
         return this;
     }
 
+
     public boolean isUseTurn() {
         return isUseTurn;
     }

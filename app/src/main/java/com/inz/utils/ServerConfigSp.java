@@ -8,7 +8,7 @@ import android.util.Log;
  * Created by howell on 2016/11/29.
  */
 
-public class ServerConfigSp {
+public class ServerConfigSp implements IConfig{
     private static final String SP_NAME = "server_set";
     public static void saveServerInfo(Context context, String ip, int port,boolean isSSL){
         SharedPreferences sp = context.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
@@ -42,12 +42,12 @@ public class ServerConfigSp {
 
     public static String loadTurnIP(Context context){
         SharedPreferences sp = context.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
-        return sp.getString("turn_ip",null);
+        return sp.getString("turn_ip",T_IP);
     }
 
     public static int loadTurnPort(Context context){
         SharedPreferences sp = context.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
-        return sp.getInt("turn_port",8862);
+        return sp.getInt("turn_port",T_PORT_SSL);
     }
 
     public static String loadServerIP(Context context){

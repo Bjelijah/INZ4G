@@ -93,7 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#00000000"
-                    android:src="@mipmap/img_record" />
+                    android:src="@mipmap/img_record"
+                    android:visibility="gone"/>
 
                 <ImageButton
                     android:id="@+id/catch_picture"
@@ -154,7 +155,8 @@
                 android:layout_marginRight="15dp"
                 android:gravity="center"
                 android:text="标清"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:visibility="gone"/>
 
 
         </FrameLayout>

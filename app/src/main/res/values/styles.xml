@@ -42,7 +42,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="MyAppThemeHome" parent="MaterialDrawerTheme.TranslucentStatus">
-        <item name="colorPrimary">@color/home_bk</item>
+        <item name="colorPrimary">@color/home_bk_dark</item>
         <item name="colorPrimaryDark">@color/home_bk_dark</item>
         <item name="colorAccent">@color/home_accent</item>
 
@@ -101,4 +101,8 @@
         <item name="android:colorPrimary">@color/home_bk</item>
         <item name="android:colorPrimaryDark">@color/home_bk_dark</item>
     </style>
+
+
+
+
 </resources>

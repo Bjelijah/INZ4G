@@ -86,7 +86,7 @@ public class SoapManager {
         Log.e("123","!!!!!!!bodyin="+envelope.bodyIn);
 
         SoapObject soapObject = (SoapObject) envelope.bodyIn;
-        SDKDebugLog.logI(TAG+":initEnvelopAndTransport","res="+soapObject.toString());
+        if(soapObject!=null)SDKDebugLog.logI(TAG+":initEnvelopAndTransport","res="+soapObject.toString());
         return soapObject;
     }
 
@@ -587,7 +587,7 @@ public class SoapManager {
         return new Result(obj.getProperty("result").toString());
     }
 
-    public VodSearchRes vodSearch(VodSearchReq req) throws IOException, XmlPullParserException {
+    public VodSearchRes vodSearch(VodSearchReq req) throws IOException, XmlPullParserException,NullPointerException {
         VodSearchRes res = new VodSearchRes();
         SoapObject rpc = new SoapObject(mNameSpace,"vodSearchReq");
         rpc.addProperty("Account",req.getAccount())
@@ -601,6 +601,7 @@ public class SoapManager {
                 .addProperty("PageSize",req.getPageSize());
         if (req.getSearchID()!=null)rpc.addProperty("SearchID",req.getSearchID());
         SoapObject obj = initEnvelopAndTransport(rpc,"http://www.haoweis.com/HomeServices/MCU/vodSearch");
+        if (obj==null)throw new NullPointerException();
         if (obj.getProperty("result").toString().equalsIgnoreCase("ok")){
             res.setPageNo(Integer.valueOf(obj.getProperty("PageNo").toString()));
             res.setPageCount(Integer.valueOf(obj.getProperty("PageCount").toString()));
@@ -859,13 +860,14 @@ public class SoapManager {
      * @throws IOException
      * @throws XmlPullParserException
      */
-    public GetNATServerRes getGetNATServerRes(GetNATServerReq req) throws IOException, XmlPullParserException {
+    public GetNATServerRes getGetNATServerRes(GetNATServerReq req) throws IOException, XmlPullParserException,NullPointerException {
         GetNATServerRes res = new GetNATServerRes();
         SoapObject rpc = new SoapObject(mNameSpace, "getNATServerReq");
         rpc.addProperty("Account", req.getAccount());
         rpc.addProperty("LoginSession", req.getLoginSession());
         SoapObject object = initEnvelopAndTransport(rpc,"http://www.haoweis.com/HomeServices/MCU/getNATServer");
         Object result = object.getProperty("result");
+        if (result==null)throw new NullPointerException();
         if (result.toString().equalsIgnoreCase("SessionExpired")){
             res.setResult(result.toString());
             return res;

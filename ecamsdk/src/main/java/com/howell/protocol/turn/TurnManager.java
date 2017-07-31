@@ -158,7 +158,7 @@ public class TurnManager {
 
 
     private void onConnect(String sessionId){Log.e("123","turn manager   onConnect="+sessionId)  ;mSessionID=sessionId;sendOnConnectResult(sessionId);}
-    private void onDisconnect(){sendOnDisconnectResult();}
+    private void onDisconnect(){SDKDebugLog.logE(TAG+"ondisconnect","disconnect");sendOnDisconnectResult();}
     private void onDisconnectUnexpect(int flag){//0 socket 1 sync  2 packet receive false   3  http !=200
         SDKDebugLog.logE(TAG+":onDisconnectUnexpect","disconnectUnexpect");
         sendOnDisconnectUnexpectResult(flag);}
@@ -199,6 +199,7 @@ public class TurnManager {
      */
     public void connect(){
         Log.e("123","Turn maganger connect  ip="+mIp+" port="+mPort+"   ssl="+mIsSSL+"  mtype="+mType+"  imei="+mIMEI+"  name="+mName+" password="+mPassword);
+        if(mIp==null) mIp="121.42.228.77";
         JniUtil.transConnect(mIp,mPort,mIsSSL,mType,mIMEI,mName,mPassword);
     }
 

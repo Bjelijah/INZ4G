@@ -53,11 +53,13 @@ public class VodFragment extends Fragment implements VideoListRecyclerAdapter.On
     ArrayList<VODRecord> mList = new ArrayList<>();
     CameraItemBean mBean;
     boolean mSearchUseTurn = false;
+    boolean mISDestory = false;
 
     Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if (mISDestory){Log.e("123","已经退出了");return;}
             switch (msg.what){
                 case MSG_VIDEO_LIST_DATA_UPDATE:
                     Log.i("123","MSG_VIDEO_LIST_DATA_UPDATE");
@@ -111,6 +113,11 @@ public class VodFragment extends Fragment implements VideoListRecyclerAdapter.On
         return mView;
     }
 
+    @Override
+    public void onDestroyView() {
+        mISDestory = true;
+        super.onDestroyView();
+    }
 
     private void initView(){
         mRv = (RecyclerView) mView.findViewById(R.id.fragment_vod_rv);
@@ -118,6 +125,7 @@ public class VodFragment extends Fragment implements VideoListRecyclerAdapter.On
         mlhv.setOnRefreshListener(this);
         mlfv = (LockFooterView) mView.findViewById(R.id.fragment_vod_footer);
         mlfv.setOnLoadListener(this);
+        mISDestory = false;
     }
 
     private void initFun(){

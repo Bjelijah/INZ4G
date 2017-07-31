@@ -47,6 +47,7 @@ public class PlayBackVideoListAction {
 
 
     public ArrayList<VODRecord> getVodList(){
+        Log.e("123","mCam="+mCam);
         mVodList = mCam.getVideoList();
         Log.e("123"," mVODLISt size="+mVodList.size());
         if (mVodList.size()!=0){
@@ -166,6 +167,7 @@ public class PlayBackVideoListAction {
                 mCam.setVideoListTime(mStartTime,mEndTime);
 
                 mTotalPage = mCam.getVideoListPageCount(mCurPage,useTurn?0:20);// fixme  turn  0
+                if (mTotalPage==-1)return false;
 //                Log.i("123","mTotalPage="+mTotalPage);
 //                mVodList = mCam.getVideoList();
 //                Log.e("123"," mVODLISt size="+mVodList.size());
@@ -183,6 +185,10 @@ public class PlayBackVideoListAction {
                     //fixme send in mgr
                    // mHandler.sendEmptyMessage(VodFragment.MSG_VIDEO_LIST_DATA_UPDATE);
                 }else {
+                    if (mTotalPage==-1){
+                        mHandler.sendEmptyMessage(VodFragment.MSG_VIDEO_LIST_DATA_UPDATE_ERROR);
+                        return;
+                    }
                     mHandler.sendEmptyMessage((mCurPage>=mTotalPage+1)?VodFragment.MSG_VIDEO_LIST_DATA_LAST:VodFragment.MSG_VIDEO_LIST_DATA_UPDATE_ERROR);
                 }
             }
@@ -205,6 +211,5 @@ public class PlayBackVideoListAction {
         }else{
             mHandler.sendEmptyMessage(VodFragment.MSG_VIDEO_LIST_DATA_LAST);
         }
-
     }
 }

@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.inz.action.LoginAction;
 import com.inz.activity.fragment.DeviceFragment;
 import com.inz.activity.fragment.HomeBaseFragment;
 import com.inz.activity.fragment.MediaFragment;
@@ -55,7 +56,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initView();
-        loadBackdrop();
+        //loadBackdrop();//fixme  we dont need backdrop just black background
         initFragment();
     }
 
@@ -67,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(getString(R.string.app_name));
+        collapsingToolbarLayout.setTitle(LoginAction.getInstance().getmInfo().getAccount());
         mAddbtn = (FloatingActionButton) findViewById(R.id.floating_action_button);
         mAddbtn.setImageDrawable(new IconicsDrawable(this, FontAwesome.Icon.faw_outdent).actionBar().color(Color.WHITE));
         mAddbtn.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +113,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         switch (mViewPager.getCurrentItem()){
             case 0:
                 menu.findItem(R.id.menu_home_help).setVisible(false);
-                menu.findItem(R.id.menu_home_like).setVisible(true);
+                menu.findItem(R.id.menu_home_like).setVisible(false);
                 if(UserConfigSp.loadLike(this)) {menu.findItem(R.id.menu_home_like).setIcon(getDrawable(R.mipmap.ic_favorite_white_24dp));}else{
                     menu.findItem(R.id.menu_home_like).setIcon(getDrawable(R.mipmap.ic_favorite_border_white_24dp));}
                 menu.findItem(R.id.menu_home_notice_search).setVisible(false);

@@ -76,7 +76,7 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
         return dialogId++;
     }
     ICam.IStream mStreamCB = null;
-    private boolean mIsSub = true;
+    private boolean mIsSub = false;
     boolean misPlayback;
 
     boolean mIsRePlay = false;
@@ -99,6 +99,13 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
         mBean = bean;
 
         String ip = ServerConfigSp.loadTurnIP(context);
+        if (ip==null){
+            //第一次登入
+            ServerConfigSp.saveTurnServerInfo(context,IConfig.T_IP,IConfig.T_PORT_SSL);
+            ip = T_IP;
+        }
+
+
         int port = ServerConfigSp.loadTurnPort(context);
         boolean bSSL = ServerConfigSp.loadServerSSL(context);
 
@@ -357,8 +364,13 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
             ));
         } catch (IOException e) {
             e.printStackTrace();
+            return -1;
         } catch (XmlPullParserException e) {
             e.printStackTrace();
+            return -1;
+        } catch (NullPointerException e){
+            e.printStackTrace();
+            return -1;
         }
         if (mVodSearchRes.getResult().equalsIgnoreCase("SessionExpired")){
             try {

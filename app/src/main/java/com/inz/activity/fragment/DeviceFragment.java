@@ -26,6 +26,7 @@ import com.inz.action.LoginAction;
 import com.inz.action.PlayAction;
 import com.inz.activity.PlayViewActivity;
 import com.inz.activity.VideoListActivity;
+import com.inz.adapter.INZDeviceRecyclerViewAdapter;
 import com.inz.adapter.SimpleDeviceRecyclerViewAdapter;
 import com.inz.bean.CameraItemBean;
 import com.inz.bean.NodeDetails;
@@ -51,11 +52,11 @@ import pullrefreshview.layout.PullRefreshLayout;
  * Created by howell on 2016/11/11.
  */
 
-public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.OnRefreshListener,BaseFooterView.OnLoadListener, SimpleDeviceRecyclerViewAdapter.OnItemClickListener,HomeAction.QueryDeviceCallback,IConfig, LoginAction.IloginRes {
+public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.OnRefreshListener,BaseFooterView.OnLoadListener, INZDeviceRecyclerViewAdapter.OnItemClickListener,HomeAction.QueryDeviceCallback,IConfig, LoginAction.IloginRes {
     public static final int MSG_RECEIVE_SIP = 0x0000;
     public static final int MSG_DEVICE_LIST_UPDATA = 0x0001;
     public static final int MSG_NET_SERVER_OK = 0x0002;
-
+    public static final int MSG_NET_SERVER_ERROR = 0x0003;
 
 
     View mView;
@@ -65,7 +66,8 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
 
     List<CameraItemBean> mList = new ArrayList<CameraItemBean>();
     int page = 1;
-    SimpleDeviceRecyclerViewAdapter adapter;
+//    SimpleDeviceRecyclerViewAdapter adapter;
+    INZDeviceRecyclerViewAdapter adapter;
 
     Handler mHandler = new Handler(){
         @Override
@@ -83,6 +85,9 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
                     break;
                 case MSG_NET_SERVER_OK:
                     doPlay(msg.arg1);
+                    break;
+                case MSG_NET_SERVER_ERROR:
+                    Snackbar.make(mView,"网络连接失败！",Snackbar.LENGTH_LONG).show();
                     break;
                 default:
                     break;
@@ -113,7 +118,8 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
 
 
 //        adapter = new DeviceRecyclerViewAdapter(getContext(),this,getActivity());
-        adapter = new SimpleDeviceRecyclerViewAdapter(getContext(),this);
+//        adapter = new SimpleDeviceRecyclerViewAdapter(getContext(),this);
+        adapter = new INZDeviceRecyclerViewAdapter(getContext(),this);
 //        adapter = new DeviceRecyclerViewAdapter(getContext(),this);
         mRV.setLayoutManager(new LinearLayoutManager(getContext()));
         mRV.setAdapter(adapter);
@@ -250,7 +256,7 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
                     getResources().getString(R.string.not_online_message),null);
             return;
         }
-        if (v.getId()==R.id.item_camera_iv_picture) {
+        if (v.getId()==R.id.item_camera_iv_picture || v.getId()==R.id.item_camera_ll_play) {
             getNetServer(pos);
         } else if(v.getId()==R.id.item_camera_info){
             //todo test vod
@@ -281,8 +287,13 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
                     res = soapManager.getGetNATServerRes(req);
                 } catch (IOException e) {
                     e.printStackTrace();
+                    return false;
                 } catch (XmlPullParserException e) {
                     e.printStackTrace();
+                    return false;
+                } catch (NullPointerException e){
+                    e.printStackTrace();
+                    return false;
                 }
                 Log.e("123","GetNATServerRes="+res.toString());
                 return true;
@@ -296,6 +307,8 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
                     msg.what = MSG_NET_SERVER_OK;
                     msg.arg1 = pos;
                     mHandler.sendMessage(msg);
+                }else{
+                    mHandler.sendEmptyMessage(MSG_NET_SERVER_ERROR);
                 }
             }
         }.execute();

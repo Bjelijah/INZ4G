@@ -78,13 +78,14 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
     protected boolean mIsAudioOpen = false;
     protected boolean mIsTalk;
 
-
+    protected boolean mIsDestory = false;
 
 
     protected Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if (mIsDestory){Log.e("123","basePlayActivity 已经退出了  msg="+String.format("0x%x",msg.what));return;}
             switch (msg.what){
                 case MSG_PTZ_SHAKE:
 //                    PTZControlAction.getInstance().ptzShake(BasePlayActivity.this, (View)msg.obj);
@@ -169,6 +170,7 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
 
 
     protected void initView(){
+        mIsDestory = false;
         mGlView = (PlayGLTextureView) findViewById(R.id.gl_texture_view);
 
         mCatchPicture = (ImageButton)findViewById(R.id.catch_picture);
@@ -301,6 +303,7 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
 
     @Override
     protected void onDestroy() {
+        mIsDestory = true;
         mPlayMgr.unregistStreamLenCallback();
         camStop();
         camDisconnect();
