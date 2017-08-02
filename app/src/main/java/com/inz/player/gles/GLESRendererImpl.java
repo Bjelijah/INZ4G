@@ -155,6 +155,11 @@ public class GLESRendererImpl implements IGLESRenderer {
         JniUtil.YUVSetCallbackMethodName(CALLBACK_REQUEST_RENDER, 1);
     }
 
+    public void rendererRelease(){
+        JniUtil.YUVDeinit();
+    }
+
+
     public void requestRender() {
         if (gl_texture_view_!=null){gl_texture_view_.requestRender();return;}
     }
@@ -170,6 +175,7 @@ public class GLESRendererImpl implements IGLESRenderer {
     }
 
     private void render(int i) {
+
         if (i==0){
             JniUtil.YUVRenderY();
         }else if (i==1) {
@@ -181,9 +187,18 @@ public class GLESRendererImpl implements IGLESRenderer {
 
     private boolean doOnce = true;
     private int frameNum = 0;
+//    boolean once = false;
     @Override
     public void onDrawFrame() {
+//        boolean boo = true;
+//        if (!once) {
+//            Log.i("12345", "!~~~onDrawFrame");
+//            once = true;
+//        }
+//        once++;
+//        if (once>2){return;}
 //		PlayerActivity.addFrames();
+        GLES20.glClearColor(0f,0f,0f,1f);
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
         JniUtil.YUVLock();
         for (int i = 0; i < 3; ++i) {
@@ -301,7 +316,11 @@ public class GLESRendererImpl implements IGLESRenderer {
     public void onSurfaceCreated() {
         // TODO Auto-generated method stub
         // Define a simple shader program for our point.
-        Log.e("123","on surface create");
+        GLES20.glClearColor(0f,0f,0f,1.0f);
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+        GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT);
+
+
 
         int program = GLES20.glCreateProgram();
         addShaderTo(GLES20.GL_VERTEX_SHADER, VERTEX_SHADER_STRING, program);
@@ -330,6 +349,7 @@ public class GLESRendererImpl implements IGLESRenderer {
         GLES20.glGenTextures(3, yuvTextures, 0);
 
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
         checkNoGLES2Error();
 
         Log.d("render","surface created");

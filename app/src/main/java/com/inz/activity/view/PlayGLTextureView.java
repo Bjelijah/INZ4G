@@ -21,4 +21,11 @@ public class PlayGLTextureView extends ZoomableTextureView {
         setRenderer(mRenderer);
         setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
+
+    @Override
+    public void onDestroy() {
+        mRenderer.rendererRelease();
+        super.onDestroy();
+
+    }
 }

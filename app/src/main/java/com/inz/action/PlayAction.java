@@ -237,11 +237,13 @@ public class PlayAction {
 
             @Override
             protected Boolean doInBackground(Void... params) {
+                Log.e("123","camLogout do inbackground");
                 return  mCamMgr.logoutCam();
             }
 
             @Override
             protected void onPostExecute(Boolean aBoolean) {
+                Log.e("123","logout cam ok");
                 super.onPostExecute(aBoolean);
                 if (mHandler==null)return;
                 if (aBoolean){

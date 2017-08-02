@@ -17,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 
+import com.howell.jni.JniUtil;
 import com.howell.protocol.soap.SoapManager;
 import com.inz.action.LoginAction;
 import com.inz.bean.Custom;
@@ -49,6 +50,7 @@ public class LogoActivity extends Activity implements LoginAction.IloginRes,ICon
 		setContentView(R.layout.logo);
 		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectNetwork().build());
 		init();
+		JniUtil.logEnable(true);
 		//开启service
 
 		//判断手机是否连接网络

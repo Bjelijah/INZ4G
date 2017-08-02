@@ -173,15 +173,17 @@ public class TurnManager {
      * @return TurnManager
      */
     public TurnManager turnInit(Context context){
-        JniUtil.transInit();
-        JniUtil.transSetCallBackObj(this,0);
-        JniUtil.transSetCallbackMethodName("onConnect",0);
-        JniUtil.transSetCallbackMethodName("onDisconnect",1);
-        JniUtil.transSetCallbackMethodName("onRecordFileList",2);
-        JniUtil.transSetCallbackMethodName("onDisconnectUnexpect",3);
-        JniUtil.transSetCallbackMethodName("onSubscribe",4);
-        JniUtil.transSetCallbackMethodName("onUnsubscribe",6);//fixme 5 is no use
-        setCrtPath(context);
+        synchronized (this) {
+            JniUtil.transInit();
+            JniUtil.transSetCallBackObj(this, 0);
+            JniUtil.transSetCallbackMethodName("onConnect", 0);
+            JniUtil.transSetCallbackMethodName("onDisconnect", 1);
+            JniUtil.transSetCallbackMethodName("onRecordFileList", 2);
+            JniUtil.transSetCallbackMethodName("onDisconnectUnexpect", 3);
+            JniUtil.transSetCallbackMethodName("onSubscribe", 4);
+            JniUtil.transSetCallbackMethodName("onUnsubscribe", 6);//fixme 5 is no use
+            setCrtPath(context);
+        }
         return this;
     }
 
@@ -190,8 +192,11 @@ public class TurnManager {
      * release buffer in jni
      */
     public void turnDeinit(){
-        JniUtil.transSetCallBackObj(null,0);
-        JniUtil.transDeinit();
+        synchronized (this) {
+            Log.i("123", "!!!!!!!!set call back obj null");
+            JniUtil.transSetCallBackObj(null, 0);
+            JniUtil.transDeinit();
+        }
     }
 
     /**

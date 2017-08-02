@@ -274,10 +274,12 @@ public class DeviceFragment extends HomeBaseFragment implements BaseHeaderView.O
     }
 
     private void getNetServer(final int pos){
+        Log.i("123","  getnet server");
         new AsyncTask<Void,Void,Boolean>(){
 
             @Override
             protected Boolean doInBackground(Void... params) {
+                Log.i("123","do inback ground  getnet server");
                 SoapManager soapManager = SoapManager.getInstance();
                 GetNATServerReq req = new GetNATServerReq(LoginAction.getInstance().getmInfo().getAccount(),
                         LoginAction.getInstance().getmInfo().getLr().getLoginSession());

@@ -129,6 +129,7 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
                     mWaitProgressBar.setVisibility(View.VISIBLE);
                     break;
                 case MSG_PLAY_PLAY_UNWAIT:
+                  //  Log.e("123","~~~~~~~~~~~~MSG_PLAY_PLAY_UNWAIT");
                     mWaitProgressBar.setVisibility(View.GONE);
                     break;
                 case MSG_PLAY_PLAY_BACK_FUN:
@@ -183,12 +184,17 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
         mReplaySeekBar = (MySeekBar) findViewById(R.id.replaySeekBar);
         mSurfaceIcon = (LinearLayout) findViewById(R.id.surface_icons);
         mWaitProgressBar = (ProgressBar) findViewById(R.id.waitProgressBar);
-
+        mWaitProgressBar.setVisibility(View.VISIBLE);
         mStreamLen = (TextView) findViewById(R.id.tv_stream_len);
 
         initPopupWindow();
     }
 
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        mWaitProgressBar.setVisibility(View.VISIBLE);
+    }
 
     protected void initViewFun(){
 //        mGlView.setEGLContextClientVersion(2);
@@ -307,7 +313,9 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
         mPlayMgr.unregistStreamLenCallback();
         camStop();
         camDisconnect();
+
         mGlView.onDestroy();
+
         super.onDestroy();
     }
 

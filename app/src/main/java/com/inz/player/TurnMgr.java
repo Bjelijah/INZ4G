@@ -491,13 +491,18 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
 
     @Override
     public void deInit() {
-        if (mgr!=null) {
+        Log.i("123","hash="+this.hashCode());
+        if (mgr != null) {
             mgr.unregistResultCallback(mTurnResultCb);
+            Log.i("123", "turn mgr deinit 000");
             mgr.disconnect();
+            Log.i("123", "turn mgr deinit 1111");
         }
+        Log.i("123", "turn mgr deinit 222");
         mgr.turnDeinit();
-
+        Log.i("123", "turn mgr deinit 333");
         super.deInit();
+        Log.i("123", "turn mgr deinit 4444  finish");
     }
 
     @Override
@@ -653,7 +658,8 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
         public void onUnsubscribe(String jsonStr) {
             TurnDisSubscribeAckBean bean = TurnJsonUtil.getTurnDisSubscribeAckFromJsonStr(jsonStr);
             if (bean.getCode()==200){
-                mgr.disconnect();
+               // Log.i("123","TurnMgr get onUnsubscribe  then we disconnect");
+               // mgr.disconnect();
             }
         }
 
@@ -666,6 +672,7 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
         public void run() {
 
             int streamLen = mgr.getStreamLen();
+
             int speed = streamLen*8/1024/F_TIME;
             long timeStamp = mgr.getTimeStamp();
             long firstTimeStamp = mgr.getFirstTimeStamp();
@@ -675,6 +682,7 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
             if (streamLen==0){
                 mUnexpectNoFrame++;
             }else{
+
                 mHandler.sendEmptyMessage(BasePlayActivity.MSG_PLAY_PLAY_UNWAIT);
                 mUnexpectNoFrame = 0;
             }

@@ -115,6 +115,9 @@ public class YV12Renderer implements Renderer {
 		JniUtil.YUVSetCallbackMethodName(CALLBACK_REQUEST_RENDER, 1);
 	}
 
+	public void YV12Release(){
+		JniUtil.YUVDeinit();
+	}
 
 
 	public void setTime(long time){
