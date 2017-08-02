@@ -52,7 +52,7 @@ public class PlayViewActivity extends BasePlayActivity implements GestureDetecto
         SDKDebugLog.LogEnable(true);
         initPlayView();
         initFun();
-        start();
+        //start();
     }
 
     @Override
@@ -258,7 +258,7 @@ public class PlayViewActivity extends BasePlayActivity implements GestureDetecto
         mSD.setOnClickListener(this);
         mStreamChange.setOnClickListener(this);
         mBack.setOnClickListener(this);
-        PlayAction.getInstance().setPlayBack(false);
+
     }
 
 
@@ -289,8 +289,10 @@ public class PlayViewActivity extends BasePlayActivity implements GestureDetecto
     }
 
 
-
-    private void start(){
+    @Override
+    protected void start(){
+        super.start();
+        PlayAction.getInstance().setPlayBack(false);
         this.camConnect();
     }
 

@@ -59,6 +59,9 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
     public final static int MSG_PLAY_PLAY_BACK_FUN      = 0xff0f;
     public final static int MSG_PLAY_RELINK_START       = 0xff10;
     public final static int MSG_PLAY_RELINK_SERVER      = 0xff11;
+    public final static int MSG_PLAY_PLAY_START         = 0xff12;
+
+
 
     //控件
 //    protected GLSurfaceView mGlView;
@@ -138,6 +141,9 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
                 case MSG_PLAY_RELINK_SERVER:
                     reLinkServer();
                     break;
+                case MSG_PLAY_PLAY_START:
+                    start();
+                    break;
                 default:
                     break;
             }
@@ -162,13 +168,14 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.glsurface);
         initView();
-
         initViewFun();
-        initPlayer();
+        mHandler.sendEmptyMessage(MSG_PLAY_PLAY_START);
     }
 
 
-
+    protected void start(){
+        initPlayer();
+    }
 
     protected void initView(){
         mIsDestory = false;

@@ -38,7 +38,7 @@ public class PlayBackActivity extends BasePlayActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         initPlayBackView();
         initFun();
-        start();
+      //  start();
     }
 
     @Override
@@ -85,8 +85,9 @@ public class PlayBackActivity extends BasePlayActivity implements View.OnClickLi
 
 
 
-
-    private void start(){
+    @Override
+    protected void start(){
+        super.start();
         mIsPause = false;
         PlayAction.getInstance().setPlayBackProgressByUser(false);
         this.camConnect();
