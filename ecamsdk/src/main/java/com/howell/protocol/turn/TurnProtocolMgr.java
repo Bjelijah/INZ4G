@@ -370,6 +370,9 @@ public class TurnProtocolMgr implements SSLSocketUtil.IProcessMsg {
 	
 	
 	private void phaseMsg(final short cmd,final String jsonStr){
+
+
+
 		new Thread(){
 			public void run() {
 				switch (KMD.valueOf(cmd)) {

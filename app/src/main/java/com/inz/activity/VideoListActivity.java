@@ -149,7 +149,6 @@ public class VideoListActivity extends AppCompatActivity implements AppBarLayout
         int  month = calendar.get(Calendar.MONTH) ;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         wheelMain.initDateTimePicker(year,month,day);
-
         new AlertDialog.Builder(VideoListActivity.this)
                 .setTitle(getResources().getString(R.string.select_date))
                 .setView(timepickerview)
@@ -160,10 +159,8 @@ public class VideoListActivity extends AppCompatActivity implements AppBarLayout
                         //"yyyy-MM-dd'T'HH:mm:ss"
                         String endTime = wheelMain.getEndTime();
                         String startTime = wheelMain.getStartTIme(endTime,1);
-
                         Log.i("123","!!!!!!!!!!!!!endTime="+endTime+"  startTime="+startTime);
                         mFragment.searchList(startTime,endTime);
-
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
@@ -173,10 +170,6 @@ public class VideoListActivity extends AppCompatActivity implements AppBarLayout
                 })
                 .show();
     }
-
-
-
-
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
@@ -201,5 +194,4 @@ public class VideoListActivity extends AppCompatActivity implements AppBarLayout
             }
         }
     }
-
 }

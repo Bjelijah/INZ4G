@@ -162,9 +162,8 @@ public class LoginAction implements IConfig{
                 hMgr.initURL(mContext,TEST_S_IP,IS_SSL?8850:8800,IS_SSL);
                 UserNonce sn = hMgr.userNonce(TEST_ACCOUNT);//从服务器获取随机码
 
-                String clientNonce = com.inz.utils.Util.createClientNonce(32);//客户端  本地随机码Util
                 //用户认证
-                Fault fault = hMgr.doUserAuthenticate(new UserClientCredential(sn.getDomain(),TEST_ACCOUNT,TEST_PASSWORD,sn.getNonce(),clientNonce));
+                Fault fault = hMgr.doUserAuthenticate(new UserClientCredential(sn.getDomain(),TEST_ACCOUNT,TEST_PASSWORD,sn.getNonce()));
                 Log.e("123","fault="+fault.toString());
             }
 

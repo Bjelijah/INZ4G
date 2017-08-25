@@ -1,6 +1,7 @@
 package com.howell.bean.httpbean;
 
 import com.howell.protocol.utils.MD5;
+import com.howell.protocol.utils.Util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -81,6 +82,18 @@ public class UserClientCredential {
         String password2 = userName+"@"+domain+":"+serverNonce+":"+clientNonce+":"+md5;
         this.verifySession = MD5.getMD5(password2);
     }
+
+    public UserClientCredential(String domain,String userName,String password,String nonce) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        this.userName = userName;
+        this.domain = domain;
+        this.nonce = nonce;
+        this.clientNonce = Util.createClientNonce(32);
+        String md5 = MD5.getMD5(password);
+        String password2 = userName+"@"+domain+":"+nonce+":"+clientNonce+":"+md5;
+        this.verifySession = MD5.getMD5(password2);
+    }
+
+
 
     public UserClientCredential(String domain,String userName,String password,String serverNonce,String clientNonce,String physicalAddress) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         this.userName = userName;

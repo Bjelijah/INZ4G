@@ -187,19 +187,12 @@ public class GLESRendererImpl implements IGLESRenderer {
 
     private boolean doOnce = true;
     private int frameNum = 0;
-//    boolean once = false;
+
     @Override
     public void onDrawFrame() {
-//        boolean boo = true;
-//        if (!once) {
-//            Log.i("12345", "!~~~onDrawFrame");
-//            once = true;
-//        }
-//        once++;
-//        if (once>2){return;}
-//		PlayerActivity.addFrames();
+
         GLES20.glClearColor(0f,0f,0f,1f);
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+        GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
         JniUtil.YUVLock();
         for (int i = 0; i < 3; ++i) {
 

@@ -80,18 +80,20 @@ public class PlayBackVideoListAction {
     }
 
     public PlayBackVideoListAction init(Context context,CameraItemBean bean){
-        mContext = context;
-        mBean = bean;
-        mCam = CamFactory.buildCam(bean.getType());
-        mCam.init(mContext,bean);
-        return reset();
+        synchronized (this) {
+            mContext = context;
+            mBean = bean;
+            mCam = CamFactory.buildCam(bean.getType());
+            mCam.init(mContext, bean);
+            return reset();
+        }
     }
 
     public void deInit(){
         mBean = null;
         mCam.deInit();
         mCam = null;
-        Log.e("123","play back video list action   deInit");
+        Log.e("123", "play back video list action   deInit");
         mHandler = null;
     }
 
@@ -183,7 +185,7 @@ public class PlayBackVideoListAction {
                 if (mHandler==null)return;
                 if (aBoolean){
                     //fixme send in mgr
-                   // mHandler.sendEmptyMessage(VodFragment.MSG_VIDEO_LIST_DATA_UPDATE);
+                    // mHandler.sendEmptyMessage(VodFragment.MSG_VIDEO_LIST_DATA_UPDATE);
                 }else {
                     if (mTotalPage==-1){
                         mHandler.sendEmptyMessage(VodFragment.MSG_VIDEO_LIST_DATA_UPDATE_ERROR);

@@ -203,9 +203,11 @@ public class TurnManager {
      * "connect" more like login to server with name and password
      */
     public void connect(){
-        Log.e("123","Turn maganger connect  ip="+mIp+" port="+mPort+"   ssl="+mIsSSL+"  mtype="+mType+"  imei="+mIMEI+"  name="+mName+" password="+mPassword);
-        if(mIp==null) mIp="121.42.228.77";
-        JniUtil.transConnect(mIp,mPort,mIsSSL,mType,mIMEI,mName,mPassword);
+
+        Log.e("123", "Turn maganger connect  ip=" + mIp + " port=" + mPort + "   ssl=" + mIsSSL + "  mtype=" + mType + "  imei=" + mIMEI + "  name=" + mName + " password=" + mPassword);
+        if (mIp == null) mIp = "121.42.228.77";
+        JniUtil.transConnect(mIp, mPort, mIsSSL, mType, mIMEI, mName, mPassword);
+
     }
 
     /**

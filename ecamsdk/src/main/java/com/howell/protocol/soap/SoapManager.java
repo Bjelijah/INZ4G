@@ -162,9 +162,9 @@ public class SoapManager {
         rpcChild.addProperty("NetType","Wifi");
         rpcChild.addProperty("Type", "CellPhone");
         rpcChild.addProperty("OSType", "Android");
-        rpcChild.addProperty("OSVersion",loginRequest.getOsVersion());
-        rpcChild.addProperty("Manufactory",loginRequest.getManuFactory());
-        rpcChild.addProperty("IEMI",loginRequest.getIEMI());
+        if(loginRequest.getOsVersion()!=null)rpcChild.addProperty("OSVersion",loginRequest.getOsVersion());
+        if (loginRequest.getManuFactory()!=null)rpcChild.addProperty("Manufactory",loginRequest.getManuFactory());
+        if (loginRequest.getIEMI()!=null)rpcChild.addProperty("IEMI",loginRequest.getIEMI());
         rpc.addProperty("MCUDev",rpcChild);
         SoapObject object = initEnvelopAndTransport(rpc,"http://www.haoweis.com/HomeServices/MCU/userLogin");
         res.setResult(object.getProperty("result").toString());

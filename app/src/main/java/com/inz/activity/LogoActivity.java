@@ -24,16 +24,21 @@ import com.inz.bean.Custom;
 import com.inz.bean.UserLoginDBBean;
 import com.inz.db.UserLoginDao;
 import com.inz.inz4g.R;
+import com.inz.modules.mcu.IMcuContract;
+import com.inz.modules.mcu.bean.Type;
+import com.inz.modules.mcu.presenter.McuPresenter;
 import com.inz.utils.IConfig;
 import com.inz.utils.NetWorkUtils;
 import com.inz.utils.ServerConfigSp;
+import com.inz.utils.ThreadUtil;
+import com.inz.utils.UserConfigSp;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 
-
-public class LogoActivity extends Activity implements LoginAction.IloginRes,IConfig{
+public class LogoActivity extends Activity implements LoginAction.IloginRes,IConfig,IMcuContract.IView{
 	//与平台交互协议单例
 	private SoapManager mSoapManager;
 
@@ -43,6 +48,8 @@ public class LogoActivity extends Activity implements LoginAction.IloginRes,ICon
 	private String account;
 	private String password;
 	private boolean mIsFromNotification;
+	private IMcuContract.IPresenter mPresenter;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -93,6 +100,40 @@ public class LogoActivity extends Activity implements LoginAction.IloginRes,ICon
 
 	private void init(){
 		mIsFromNotification = getIntent().getBooleanExtra("notification",false);
+		bindPresenter();//// FIXME: 2017/8/16
+//		initFun();//// FIXME: 2017/8/16 I decide not add in this project not used mvp
+	}
+
+	private void initFun(){
+		//用户
+		account = UserConfigSp.loadUserName(this);
+		password = UserConfigSp.loadUserPwd(this);
+		isFirstLogin = UserConfigSp.loadUserIsFirst(this);
+		//登入
+		if (account!=null && password != null){
+			//login
+
+		}else{
+			// first login
+			LogoActivity.class.notify();
+
+		}
+
+
+		//
+		ThreadUtil.scheduledThreadStart(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					LogoActivity.class.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}, 1, TimeUnit.SECONDS);
+
+
+
 	}
 
 
@@ -101,6 +142,12 @@ public class LogoActivity extends Activity implements LoginAction.IloginRes,ICon
 		// TODO Auto-generated method stub
 		super.onStop();
 		this.finish();
+	}
+
+	@Override
+	protected void onDestroy() {
+		unbindPresenter();
+		super.onDestroy();
 	}
 
 	@Override
@@ -119,6 +166,24 @@ public class LogoActivity extends Activity implements LoginAction.IloginRes,ICon
 		startActivity(intent);
 		LoginAction.getInstance().unRegLoginResCallback();
 		finish();
+	}
+
+	@Override
+	public void bindPresenter() {
+		if (mPresenter==null){
+			mPresenter = new McuPresenter();
+		}
+		mPresenter.bindView(this);
+	}
+
+	@Override
+	public void unbindPresenter() {
+		mPresenter.unbindView();
+	}
+
+	@Override
+	public void loginRes(Type type) {
+
 	}
 
 	class LoginThread extends Thread{

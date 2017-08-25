@@ -108,6 +108,7 @@ public class PlayAction {
     }
 
     public PlayAction setPlayBack(boolean isPlayback){
+        Log.i("123","mCamMgr="+mCamMgr);//FIXME  me be == null 列表返回慢的时候
         mCamMgr.setPlayBack(isPlayback);
         return this;
     }

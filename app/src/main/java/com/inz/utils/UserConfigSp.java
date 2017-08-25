@@ -18,6 +18,7 @@ public class UserConfigSp {
         editor.putString("user_name",name);
         editor.putString("user_pwd",pwd);
         editor.putBoolean("user_custom",isCustom);
+        editor.putBoolean("user_first",false);
         editor.commit();
 
 
@@ -28,8 +29,8 @@ public class UserConfigSp {
         editor2.putBoolean("custom",isCustom);
         editor2.putBoolean("isFirstLogin",false);
         editor2.commit();
-
     }
+
     public static String loadUserName(Context context){
         SharedPreferences sp = context.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
        return sp.getString("user_name",null);
@@ -44,6 +45,12 @@ public class UserConfigSp {
         SharedPreferences sp = context.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
         return sp.getBoolean("user_custom",false);
     }
+
+    public static boolean loadUserIsFirst(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
+        return sp.getBoolean("user_first",true);
+    }
+
 
     public static void saveSoundState(Context context,boolean isOpen){
         SharedPreferences sp = context.getSharedPreferences(SET_SP_NAME,Context.MODE_PRIVATE);

@@ -169,7 +169,8 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
         setContentView(R.layout.glsurface);
         initView();
         initViewFun();
-        mHandler.sendEmptyMessage(MSG_PLAY_PLAY_START);
+//        mHandler.sendEmptyMessage(MSG_PLAY_PLAY_START);
+        start();
     }
 
 
@@ -220,6 +221,7 @@ public class BasePlayActivity extends FragmentActivity implements SurfaceHolder.
             showSurfaceIcon(false);
         }
         mIsAudioOpen = UserConfigSp.loadSoundState(this);
+
 //        mSound.setImageDrawable(getResources().getDrawable(mIsAudioOpen?R.mipmap.img_sound:R.mipmap.img_no_sound));
     }
 

@@ -30,6 +30,7 @@ import com.inz.bean.CameraItemBean;
 import com.inz.bean.VODRecord;
 import com.inz.utils.IConfig;
 import com.inz.utils.ServerConfigSp;
+import com.inz.utils.ThreadUtil;
 
 import org.json.JSONException;
 import org.xmlpull.v1.XmlPullParserException;
@@ -213,10 +214,10 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
 
     @Override
     public boolean reLinkServer() {
-        new Thread(){
+
+        ThreadUtil.cachedThreadStart(new Runnable() {
             @Override
             public void run() {
-                super.run();
                 Log.i("123","relinkserver mIsreplay = true");
 //                mIsRePlay = true;
 //                mgr.disconnect();
@@ -224,24 +225,17 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
                 mgr.turnDeinit();//close socket
                 mgr.turnInit(mContext);
                 mgr.connect();
-
             }
-        }.start();
-
-
-
-
-
+        });
         return true;
     }
 
     @Override
     public boolean reLink() {
         //TODO do relink
-        new Thread(){
+        ThreadUtil.cachedThreadStart(new Runnable() {
             @Override
             public void run() {
-                super.run();
                 stopViewCam();
                 try {
                     Thread.sleep(1000);
@@ -254,9 +248,8 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
                 }else{
                     playView();
                 }
-
             }
-        }.start();
+        });
         return true;
     }
 
@@ -563,18 +556,17 @@ public class TurnMgr extends BasePlayer implements ICam,IConfig, LoginAction.Ilo
             if (mIsRePlay){
 
 //                mHandler.sendEmptyMessageDelayed(BasePlayActivity.MSG_PLAY_REPLAY,1000);
-                new Thread(){
+                ThreadUtil.cachedThreadStart(new Runnable() {
                     @Override
                     public void run() {
-                        super.run();
                         try {
-                            sleep(1000);
+                            Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         mgr.connect();
                     }
-                }.start();
+                });
             }
         }
 
