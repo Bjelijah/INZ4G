@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.getkeepsafe.dexcount'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -10,6 +10,7 @@ android {
         versionCode 29
         versionName "1.1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -61,7 +62,7 @@ dependencies {
     }
 
 
-
+    implementation 'com.android.support:multidex:1.0.1'
 
     compile 'com.mikepenz:itemanimators:0.5.0@aar'
     // used to provide the MiniDrawer to normal Drawer crossfade effect via a SlidingPane layout

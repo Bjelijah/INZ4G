@@ -45,4 +45,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/jackson-core-asl-1.9.7.jar')
     compile files('libs/jackson-mapper-asl-1.9.7.jar')
+    implementation project(path: ':library')
 }

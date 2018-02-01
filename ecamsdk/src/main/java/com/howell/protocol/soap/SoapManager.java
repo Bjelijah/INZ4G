@@ -600,6 +600,7 @@ public class SoapManager {
                 .addProperty("PageNo",req.getPageNo())
                 .addProperty("PageSize",req.getPageSize());
         if (req.getSearchID()!=null)rpc.addProperty("SearchID",req.getSearchID());
+        Log.i("123","rpc="+rpc.toString());
         SoapObject obj = initEnvelopAndTransport(rpc,"http://www.haoweis.com/HomeServices/MCU/vodSearch");
         if (obj==null)throw new NullPointerException();
         if (obj.getProperty("result").toString().equalsIgnoreCase("ok")){
